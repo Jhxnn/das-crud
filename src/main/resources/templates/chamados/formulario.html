@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Novo chamado</title>
+</head>
+<body>
+    <h1>Novo chamado</h1>
+
+    <form action="/chamados" method="post" th:object="${request}">
+        <p>
+            <label>Título:</label>
+            <input type="text" th:field="*{titulo}">
+            <span style="color: red" th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}"></span>
+        </p>
+        <p>
+            <label>Descrição:</label>
+            <textarea th:field="*{descricao}"></textarea>
+            <span style="color: red" th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}"></span>
+        </p>
+        <button type="submit">Salvar</button>
+        <a href="/chamados">Voltar</a>
+    </form>
+</body>
+</html>
