@@ -9,4 +9,10 @@ public interface CategoriaService {
     CategoriaResponseDto criar(CategoriaRequestDto request);
 
     List<CategoriaResponseDto> listar();
+
+    CategoriaResponseDto buscarPorId(Long id);
+
+    CategoriaResponseDto atualizar(Long id, CategoriaRequestDto request);
+
+    void excluir(Long id);
 }

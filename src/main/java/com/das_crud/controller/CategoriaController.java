@@ -5,6 +5,7 @@ import com.das_crud.dto.CategoriaResponseDto;
 import com.das_crud.interfaces.CategoriaService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,5 +29,22 @@ public class CategoriaController {
     @GetMapping
     public List<CategoriaResponseDto> listar() {
         return service.listar();
+    }
+
+    @GetMapping("/{id}")
+    public CategoriaResponseDto buscar(@PathVariable Long id) {
+        return service.buscarPorId(id);
+    }
+
+    @PutMapping("/{id}")
+    public CategoriaResponseDto atualizar(@PathVariable Long id,
+                                          @Valid @RequestBody CategoriaRequestDto request) {
+        return service.atualizar(id, request);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> excluir(@PathVariable Long id) {
+        service.excluir(id);
+        return ResponseEntity.noContent().build();
     }
 }
