@@ -1,4 +1,16 @@
 package com.das_crud.dto;
 
-public class TecnicoRequestDto {
-}
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
+public record TecnicoRequestDto(
+        @NotBlank(message = "Nome é obrigatório")
+        @Size(max = 120, message = "Nome deve ter no máximo 120 caracteres")
+        String nome,
+
+        @NotBlank(message = "E-mail é obrigatório")
+        @Email(message = "E-mail inválido")
+        @Size(max = 160, message = "E-mail deve ter no máximo 160 caracteres")
+        String email
+) {}

@@ -1,4 +1,7 @@
 package com.das_crud.dto;
 
-public class TecnicoResponseDto {
-}
+public record TecnicoResponseDto(
+        Long id,
+        String nome,
+        String email
+) {}
